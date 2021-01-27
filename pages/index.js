@@ -40,14 +40,14 @@ export default function Home() {
         <meta property="og:url" content="https://codequiz.felipeoes.vercel.app/" />
         <meta property="og:title" content="Quiz Stranger Things" />
         <meta property="og:description" content="Teste os seus conhecimentos sobre Stranger Things e vamos ver se você vai acabar parando no mundo invertido" />
-        <meta property="og:image" content="db.bg" />
+        <meta property="og:image" content="https://i.ibb.co/LJXFBwQ/bgImage.png?resize=1530%2C1220&ssl=1" />
 
         {/* <!-- Twitter --> */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://codequiz.felipeoes.vercel.app/" />
         <meta property="twitter:title" content="Quiz Stranger Things" />
         <meta property="twitter:description" content="Teste os seus conhecimentos sobre Stranger Things e vamos ver se você vai acabar parando no mundo invertido" />
-        <meta property="twitter:image" content="" />
+        <meta property="twitter:image" content="https://i.ibb.co/LJXFBwQ/bgImage.png?resize=1530%2C1220&ssl=1" />
         <title>{db.title}</title>
       </Head>
       <QuizContainer>
