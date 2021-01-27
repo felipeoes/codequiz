@@ -32,6 +32,22 @@ export default function Home() {
   return (
     <QuizBackground backgroundImage={db.bg}>
       <Head>
+        <meta name="title" content="Quiz Stranger Things" />
+        <meta name="description" content="Teste os seus conhecimentos sobre Stranger Things e vamos ver se você vai acabar parando no mundo invertido" />
+
+        {/* <!-- Open Graph / Facebook --> */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://codequiz.felipeoes.vercel.app/" />
+        <meta property="og:title" content="Quiz Stranger Things" />
+        <meta property="og:description" content="Teste os seus conhecimentos sobre Stranger Things e vamos ver se você vai acabar parando no mundo invertido" />
+        <meta property="og:image" content="db.bg" />
+
+        {/* <!-- Twitter --> */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://codequiz.felipeoes.vercel.app/" />
+        <meta property="twitter:title" content="Quiz Stranger Things" />
+        <meta property="twitter:description" content="Teste os seus conhecimentos sobre Stranger Things e vamos ver se você vai acabar parando no mundo invertido" />
+        <meta property="twitter:image" content="" />
         <title>{db.title}</title>
       </Head>
       <QuizContainer>
