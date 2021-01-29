@@ -26,6 +26,9 @@ const FooterWrapper = styled.footer`
       text-decoration: underline;
     }
   }
+  p {
+    font-size : 12px;
+  }
 `;
 
 export default function Footer(props) {

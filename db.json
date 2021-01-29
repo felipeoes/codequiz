@@ -1,7 +1,7 @@
 {
     "bg": "https://i.ibb.co/LJXFBwQ/bgImage.png?resize=1530%2C1220&ssl=1",
     "title": "Quiz Stranger Things",
-    "description": "Teste os seus conhecimentos sobre Stranger Things e vamos ver se você vai acabar parando no mundo invertido",
+    "description": "Bora ver se você é um domador de Demogorgons ou se vai acabar parando no Mundo Invertido",
     "questions": [
       {
         "image": "https://img.wattpad.com/5020ce90a238b7df55fc7110d511f34f5349bc66/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f5844397539654c5f57637a726d413d3d2d3933333435363336302e313632393239646233616536613762373239363230353731393832302e676966?s=fit&w=720&h=720",
@@ -16,13 +16,15 @@
         ]
       },
       {
-        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
-        "title": "Como fazer um background gradiente com css?",
-        "description": "Faz tempo em haha",
-        "answer": 0,
+        "image": "https://tvguide1.cbsistatic.com/resize/4df17560fe50c176facca559224299e9fa74ecc6/hub/2017/11/20/36daa70a-2cb3-4b06-8620-1cb4c96c71e5/tumblroyjmhfbjxa1u3g7u0o5500.gif?fit=crop&height=1080&width=1920",
+        "title": "Como é o chamado o Demodog que Dustin adotou na 1ª temporada?",
+        "description": "Moleza hein!",
+        "answer": 3,
         "alternatives": [
-           "background: linear-gradient(#e66465, #9198e5);",
-           "background: gradient(#e66465, #9198e5);"
+           "Dog",
+           "Democão",
+           "Darius",
+           "Dart"
         ]
       }
     ],

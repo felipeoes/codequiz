@@ -3,15 +3,15 @@ import React from 'react';
 import styled from 'styled-components';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-
 import db from '../db.json';
 import Widget from '../src/components/Widget';
-import QuizLogo from '../src/components/QuizLogo';
 import QuizBackground from '../src/components/QuizBackground';
 import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
 import Input from '../src/components/Input';
 import Button from '../src/components/Button';
+// eslint-disable-next-line import/no-named-as-default
+import { QuizLogoIndex } from '../src/components/QuizLogo';
 
 const QuizContainer = styled.div`
   width: 100%;
@@ -49,9 +49,12 @@ export default function Home() {
         <meta property="twitter:description" content="Teste os seus conhecimentos sobre Stranger Things e vamos ver se você vai acabar parando no mundo invertido" />
         <meta property="twitter:image" content="https://i.ibb.co/LJXFBwQ/bgImage.png?resize=1530%2C1220&ssl=1" />
         <title>{db.title}</title>
+
+        <link rel="icon" href="https://lh3.googleusercontent.com/proxy/lTNC5esOwgrxYVEks7wdiVZbkS_-cGIi84l1zvz_CVP_PUa9zIsCqz6_PZD1g5Rk8VF3HaC8jtVyWSzRUuDNA__3GBBsu66Dg9smg4fIOoyl0g" />
+
       </Head>
       <QuizContainer>
-        <QuizLogo />
+        <QuizLogoIndex />
         <Widget>
           <Widget.Header>
             <h1>{db.title}</h1>
@@ -77,17 +80,18 @@ export default function Home() {
         </Widget>
 
         <Widget>
+          <Widget.Header>
+            <h1>Quizzes da Galera</h1>
+          </Widget.Header>
           <Widget.Content>
-            <h1>Quizes da Galera</h1>
-
-            <p>Que tal se aventurar com diversos outros quizes que a galera desenvolveu?</p>
+            <p>Que tal se aventurar com diversos outros quizzes que a galera desenvolveu?</p>
             <Button
               onClick={function (infosDoEvento) {
                 infosDoEvento.preventDefault();
                 router.push('/quizes');
               }}
             >
-              Ver quizes
+              Ver quizzes
             </Button>
           </Widget.Content>
         </Widget>
