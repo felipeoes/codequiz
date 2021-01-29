@@ -10,6 +10,7 @@ const Widget = styled.div`
   transition: .3s;
   &:hover,
   &:focus {
+    /* transform: scale(1.2); */
     box-shadow: 10px 8px 11px 2px rgba(20, 5, 21, 0.75);
     opacity: 0.9;
   }

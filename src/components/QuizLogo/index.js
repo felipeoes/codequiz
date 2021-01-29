@@ -72,7 +72,7 @@ export const QuizLogoIndex = styled(Logo)`
   display: block;
   &:hover,
   &:focus {
-    opacity: 0.8;
+    opacity: 0.7;
   }
   @media screen and (max-width: 500px) {
     margin: 0;

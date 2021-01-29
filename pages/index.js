@@ -2,6 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Head from 'next/head';
+import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import db from '../db.json';
 import Widget from '../src/components/Widget';
@@ -12,6 +13,33 @@ import Input from '../src/components/Input';
 import Button from '../src/components/Button';
 // eslint-disable-next-line import/no-named-as-default
 import { QuizLogoIndex } from '../src/components/QuizLogo';
+
+const MainWidget = styled.div`
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+    box-shadow: 10px 8px 11px 2px rgba(20, 5, 21, 0.75);
+    opacity: 0.9;
+  }
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border: 1px solid ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.mainBg};
+  border-radius: 4px;
+  overflow: hidden;
+  transition: .3s;
+  h1, h2, h3 {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 0;
+  }
+  p {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.2;
+  }
+`;
 
 const QuizContainer = styled.div`
   width: 100%;
@@ -25,10 +53,14 @@ const QuizContainer = styled.div`
   }
 `;
 
+// eslint-disable-next-line import/no-mutable-exports
+export let getName = '';
+
 export default function Home() {
   const router = useRouter();
   const [name, setName] = React.useState('');
-
+  // eslint-disable-next-line no-const-assign
+  getName = name;
   return (
     <QuizBackground backgroundImage={db.bg}>
       <Head>
@@ -55,7 +87,16 @@ export default function Home() {
       </Head>
       <QuizContainer>
         <QuizLogoIndex />
-        <Widget>
+        <MainWidget
+          as={motion.section}
+          transition={{ delay: 0, duration: 0.7 }}
+          variants={{
+            show: { opacity: 1 },
+            hidden: { opacity: 0 },
+          }}
+          initial="hidden"
+          animate="show"
+        >
           <Widget.Header>
             <h1>{db.title}</h1>
           </Widget.Header>
@@ -77,15 +118,25 @@ export default function Home() {
               </Button>
             </form>
           </Widget.Content>
-        </Widget>
+        </MainWidget>
 
-        <Widget>
+        <MainWidget
+          as={motion.section}
+          transition={{ delay: 0.5, duration: 0.7 }}
+          variants={{
+            show: { opacity: 1 },
+            hidden: { opacity: 0 },
+          }}
+          initial="hidden"
+          animate="show"
+        >
           <Widget.Header>
             <h1>Quizzes da Galera</h1>
           </Widget.Header>
           <Widget.Content>
             <p>Que tal se aventurar com diversos outros quizzes que a galera desenvolveu?</p>
             <Button
+              disabled={name.length === 0}
               onClick={function (infosDoEvento) {
                 infosDoEvento.preventDefault();
                 router.push('/quizes');
@@ -94,8 +145,18 @@ export default function Home() {
               Ver quizzes
             </Button>
           </Widget.Content>
-        </Widget>
-        <Footer />
+        </MainWidget>
+
+        <Footer
+          as={motion.footer}
+          transition={{ delay: 0.3, duration: 0.7 }}
+          variants={{
+            show: { opacity: 1 },
+            hidden: { opacity: 0 },
+          }}
+          initial="hidden"
+          animate="show"
+        />
       </QuizContainer>
       <GitHubCorner projectUrl="https://github.com/felipeoes" />
     </QuizBackground>
