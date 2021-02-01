@@ -21,6 +21,7 @@
     "react-nextjs-toast": "^1.2.5",
     "react-overlays": "^4.1.1",
     "react-toastify": "^7.0.1",
+    "react-tooltip": "^4.2.13",
     "styled-components": "^5.0.0"
   },
   "devDependencies": {

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
+import ReactTooltip from 'react-tooltip';
 import db from '../db.json';
 import Widget from '../src/components/Widget';
 import QuizContainer from '../src/components/QuizContainer';
@@ -102,9 +103,14 @@ export default function Home() {
                 placeholder="Diz aí seu nome"
                 value={name}
               />
-              <Button type="submit" disabled={name.length === 0}>
-                {`Bora jogar ${name}!`}
-              </Button>
+              <p data-tip data-for="info">
+                <ReactTooltip id="info" type="light" place="top" effect="solid">
+                  <span>Digite seu nome para liberar o jogo</span>
+                </ReactTooltip>
+                <Button type="submit" disabled={name.length === 0}>
+                  {`Bora jogar ${name}!`}
+                </Button>
+              </p>
             </form>
           </Widget.Content>
         </MainWidget>
