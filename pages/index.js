@@ -103,9 +103,9 @@ export default function Home() {
                 placeholder="Diz aí seu nome"
                 value={name}
               />
-              <p data-tip data-for="info">
+              <p disabled={name.length === 0} data-tip data-for="info">
                 <ReactTooltip id="info" type="light" place="top" effect="solid">
-                  <span>Digite seu nome para liberar o jogo</span>
+                  <span disabled={name.length === 0}>Digite seu nome para liberar o jogo</span>
                 </ReactTooltip>
                 <Button type="submit" disabled={name.length === 0}>
                   {`Bora jogar ${name}!`}
