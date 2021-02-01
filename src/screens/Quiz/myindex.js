@@ -116,21 +116,21 @@ export function ResultWidget({ results }) {
         <h1 style={{ marginTop: 30, marginBottom: 10, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Compartilhe seu resultado</h1>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <FacebookShareButton
-            url="https://github.com/next-share"
-            quote="next-share is a social share buttons plugin for React apps."
-            hashtag="#nextshare"
+            url="https://strangerquiz.felipeoes.vercel.app"
+            quote="Olha que massa esse quiz sobre Stranger Things que acabei de jogar."
+            hashtag="#strangerquiz"
           >
             <FacebookIcon size={32} round />
           </FacebookShareButton>
           <TwitterShareButton
-            url="https://github.com/next-share"
-            title="next-share is a social share buttons plugin for React apps."
+            url="https://strangerquiz.felipeoes.vercel.app"
+            title="Olha que massa esse quiz sobre Stranger Things que acabei de jogar."
           >
             <TwitterIcon size={32} round />
           </TwitterShareButton>
           <WhatsappShareButton
-            url="https://github.com/next-share"
-            title="next-share is a social share buttons plugin for React apps."
+            url="https://strangerquiz.felipeoes.vercel.app"
+            title="Olha que massa esse quiz sobre Stranger Things que acabei de jogar."
             separator=":: "
           >
             <WhatsappIcon size={32} round />
