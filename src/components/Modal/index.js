@@ -1,12 +1,77 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/react-in-jsx-scope */
 import React from 'react';
 import styled from 'styled-components';
 import Modal from 'react-overlays/Modal';
+import Image from 'next/image';
 import Button from '../Button';
-import ResultWidget from '../../screens/Quiz/myindex';
+import Widget from '../Widget';
+import { getName } from '../../../pages/index';
+// import { ResultWidget } from '../../screens/Quiz/myindex';
 
-const rand = () => Math.floor(Math.random() * 20) - 10;
+function ResultWidget({ handleOnClose }) {
+  return (
+    <Widget style={{
+      margin: 0, width: '100%', height: '100%',
+    }}
+    >
+      <Widget.Header style={{ paddingTop: 5, paddingBottom: 0 }}>
+        RANKING
+        <Button
+          // style={{ marginLeft: '80%' }}
+          onClick={handleOnClose}
+        >
+          <div style={{ marginLeft: '95%', marginRight: -250 }}>
+            <Image
+              src="/closeButton.png"
+              alt="CloseButton"
+              width={20}
+              height={20}
+            />
+          </div>
+        </Button>
+      </Widget.Header>
+
+      <Widget.Content>
+        <p style={{
+          textAlign: 'center', alignItems: 'center', fontSize: 15,
+        }}
+        >
+          Parabéns,
+          {' '}
+          {getName}
+          !
+          {' '}
+          {' '}
+        </p>
+        <section
+          style={{
+            marginLeft: 50, marginTop: 20, textAlign: 'center', alignItems: 'center', fontSize: 14,
+          }}
+        >
+
+          <table style={{ background: '#dd3333', borderRadius: 3 }}>
+            <thead>
+              <tr>
+                <th>Posição</th>
+                <th>Nome</th>
+                <th>Pontuação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style={{ background: '#000', borderRadius: 5 }}>
+                <th>1</th>
+                <th>{getName}</th>
+                <th>10 pontos</th>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </Widget.Content>
+    </Widget>
+  );
+}
 
 const Backdrop = styled('div')`
   position: fixed;
@@ -23,22 +88,25 @@ const Backdrop = styled('div')`
 // don't sit right on top of each other.
 const RandomlyPositionedModal = styled(Modal)`
   position: fixed;
-  width: 50%;
-  height: 50%;
+  width: 30%;
+  height: 30%;
   z-index: 1040;
-  margin-left: 100;
-  top: 150;
-  left: 150; 
-  border: 1px solid #e5e5e5;
-  background-color: white;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-  padding: 20px;
+  /* margin-left: 100; */
+  /* top: 150;
+  left: 150;  */
+  /* border: 5px solid '##dd3333'; */
+  /* background-color: white; */
+  /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); */
+  /* padding: 20px; */
 `;
 
 export default function ModalExample() {
   const [show, setShow] = React.useState(false);
-
   const renderBackdrop = (props) => <Backdrop {...props} />;
+
+  function handleOnClose() {
+    setShow(false);
+  }
 
   return (
     <div className="modal-example">
@@ -50,21 +118,18 @@ export default function ModalExample() {
       </Button>
 
       <RandomlyPositionedModal
-        style={{ marginLeft: '25%', marginTop: '10%' }}
+        style={{ marginLeft: '35%', marginTop: '10%', outline: 'none' }}
         show={show}
         onHide={() => setShow(false)}
         renderBackdrop={renderBackdrop}
         aria-labelledby="modal-label"
       >
-        <div>
-          <h4 id="modal-label">Text in a modal</h4>
-          <p style={{ color: '#000' }}>
-            Duis mollis, est non commodo luctus, nisi erat
-            porttitor ligula.
-          </p>
-          {/* <ModalExample /> */}
+        <div style={{
+          padding: 0, margin: 0, width: '100%', height: '100%',
+        }}
+        >
+          <ResultWidget handleOnClose={handleOnClose} />
         </div>
-        <ResultWidget />
       </RandomlyPositionedModal>
     </div>
   );

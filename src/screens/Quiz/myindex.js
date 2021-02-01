@@ -108,7 +108,7 @@ export function ResultWidget({ results }) {
         >
           VOLTAR
         </Button>
-        {/* <Modal /> */}
+        <Modal />
       </Widget.Content>
     </Widget>
   );
@@ -294,7 +294,6 @@ export default function QuizPage({ externalQuestions, externalBg }) {
         setCurrentQuestion(nextQuestion);
       }, 1 * 1000);
     } else {
-      <LoadingWidget />;
       setTimeout(() => {
         setScreenState(screenStates.RESULT);
       }, 1 * 1000);
