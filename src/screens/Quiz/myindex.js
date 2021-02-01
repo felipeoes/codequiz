@@ -16,7 +16,7 @@ import BackLinkArrow from '../../components/BackLinkArrow';
 import { getName } from '../../../pages/index';
 import db from '../../../db.json';
 import Modal from '../../components/Modal';
-
+import GitHubCorner from '../../components/GitHubCorner';
 import loadingAnimation from './animations/load.json';
 import success from './animations/success.json';
 import wrong from './animations/wrong.json';
@@ -339,6 +339,7 @@ export default function QuizPage({ externalQuestions, externalBg }) {
         {screenState === screenStates.LOADING && <LoadingWidget />}
         {screenState === screenStates.RESULT && <ResultWidget results={results} />}
       </QuizContainer>
+      <GitHubCorner />
     </QuizBackground>
   );
 }
