@@ -1,111 +1,51 @@
-/* eslint-disable react/jsx-no-bind */
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { Lottie } from '@crello/react-lottie';
-// import db from '../../../db.json';
-import { motion } from 'framer-motion';
-import { useRouter } from 'next/router';
 import Widget from '../../components/Widget';
-import QuizLogo from '../../components/QuizLogo';
 import QuizBackground from '../../components/QuizBackground';
 import QuizContainer from '../../components/QuizContainer';
 import AlternativesForm from '../../components/AlternativesForm';
 import Button from '../../components/Button';
 import BackLinkArrow from '../../components/BackLinkArrow';
-import { getName } from '../../../pages/index';
 
 import loadingAnimation from './animations/load.json';
-import success from './animations/success.json';
-import wrong from './animations/wrong.json';
 
 function ResultWidget({ results }) {
-  const router = useRouter();
   return (
-    <Widget
-      as={motion.footer}
-      transition={{ delay: 0.3, duration: 0.7 }}
-      variants={{
-        show: { opacity: 1 },
-        hidden: { opacity: 0 },
-      }}
-      initial="hidden"
-      animate="show"
-      style={{ marginTop: 50 }}
-    >
+    <Widget>
       <Widget.Header>
-        RESULTADO
+        Tela de Resultado:
       </Widget.Header>
 
       <Widget.Content>
-        <p
-          style={{ fontSize: 15 }}
-        >
-          Parabéns,
+        <p>
+          Você acertou
           {' '}
-          { getName }
-          {' ! '}
-          {' '}
-        </p>
-        Você acertou
-        {' '}
-        {/* {results.reduce((somatoriaAtual, resultAtual) => {
+          {/* {results.reduce((somatoriaAtual, resultAtual) => {
             const isAcerto = resultAtual === true;
             if (isAcerto) {
               return somatoriaAtual + 1;
             }
             return somatoriaAtual;
           }, 0)} */}
-        {results.filter((x) => x).length}
-        {' '}
-        perguntas
-        <p
-          style={{ fontSize: 15 }}
-        />
-        <ul
-          style={{ justifyContent: 'center', alignItems: 'center', fontSize: 14 }}
-        >
+          {results.filter((x) => x).length}
+          {' '}
+          perguntas
+        </p>
+        <ul>
           {results.map((result, index) => (
-            <li
-              // style={{ textAlign: 'center', justifyContent: 'center', alignItems: 'center' }}
-              key={`result__${result}`}
-            >
+            <li key={`result__${index}`}>
               #
               {index + 1}
               {' '}
-              Pergunta:
+              Resultado:
               {result === true
-                ? (
-                  <Lottie
-                    width="20%"
-                    height="20%"
-                    margin-left="0"
-                    padding-left="0"
-                    className="lottie-container basic"
-                    config={{ animationData: success, loop: true, autoplay: true }}
-                  />
-                )
-                : (
-                  <Lottie
-                    width="20%"
-                    height="20%"
-                    margin-left="0"
-                    padding-left="0"
-                    className="lottie-container basic"
-                    config={{ animationData: wrong, loop: true, autoplay: true }}
-                  />
-                )}
+                ? 'Acertou'
+                : 'Errou'}
             </li>
           ))}
         </ul>
-        <Button
-          onClick={function (infosDoEvento) {
-            infosDoEvento.preventDefault();
-            router.push('/');
-          }}
-        >
-          VOLTAR
-        </Button>
-
       </Widget.Content>
     </Widget>
   );
@@ -120,8 +60,8 @@ function LoadingWidget() {
 
       <Widget.Content style={{ display: 'flex', justifyContent: 'center' }}>
         <Lottie
-          width="300px"
-          height="230px"
+          width="200px"
+          height="200px"
           className="lottie-container basic"
           config={{ animationData: loadingAnimation, loop: true, autoplay: true }}
         />
@@ -144,16 +84,7 @@ function QuestionWidget({
   const hasAlternativeSelected = selectedAlternative !== undefined;
 
   return (
-    <Widget
-      as={motion.footer}
-      transition={{ delay: 0.75, duration: 0.7 }}
-      variants={{
-        show: { opacity: 1 },
-        hidden: { opacity: 0 },
-      }}
-      initial="hidden"
-      animate="show"
-    >
+    <Widget>
       <Widget.Header>
         <BackLinkArrow href="/" />
         <h3>
@@ -177,6 +108,7 @@ function QuestionWidget({
         <p>
           {question.description}
         </p>
+
         <AlternativesForm
           onSubmit={(infosDoEvento) => {
             infosDoEvento.preventDefault();
@@ -186,7 +118,7 @@ function QuestionWidget({
               onSubmit();
               setIsQuestionSubmited(false);
               setSelectedAlternative(undefined);
-            }, 2 * 1000);
+            }, 3 * 1000);
           }}
         >
           {question.alternatives.map((alternative, alternativeIndex) => {
@@ -205,7 +137,7 @@ function QuestionWidget({
                   style={{ display: 'none' }}
                   id={alternativeId}
                   name={questionId}
-                  onClick={() => setSelectedAlternative(alternativeIndex)}
+                  onChange={() => setSelectedAlternative(alternativeIndex)}
                   type="radio"
                 />
                 {alternative}
@@ -219,26 +151,8 @@ function QuestionWidget({
           <Button type="submit" disabled={!hasAlternativeSelected}>
             Confirmar
           </Button>
-          {isQuestionSubmited && isCorrect && (
-            <div style={{ marginTop: -350, overlay: 'hidden' }}>
-              <Lottie
-                width="100%"
-                height="100%"
-                className="lottie-container basic"
-                config={{ animationData: success, loop: true, autoplay: true }}
-              />
-            </div>
-          )}
-          {isQuestionSubmited && !isCorrect && (
-            <div style={{ marginTop: -300, overlay: 'hidden' }}>
-              <Lottie
-                width="90%"
-                height="90%"
-                className="lottie-container basic"
-                config={{ animationData: wrong, loop: true, autoplay: true }}
-              />
-            </div>
-          )}
+          {isQuestionSubmited && isCorrect && <p>Você acertou!</p>}
+          {isQuestionSubmited && !isCorrect && <p>Você errou!</p>}
         </AlternativesForm>
       </Widget.Content>
     </Widget>
@@ -282,21 +196,15 @@ export default function QuizPage({ externalQuestions, externalBg }) {
   function handleSubmitQuiz() {
     const nextQuestion = questionIndex + 1;
     if (nextQuestion < totalQuestions) {
-      setTimeout(() => {
-        setCurrentQuestion(nextQuestion);
-      }, 1 * 1000);
+      setCurrentQuestion(nextQuestion);
     } else {
-      <LoadingWidget />;
-      setTimeout(() => {
-        setScreenState(screenStates.RESULT);
-      }, 1 * 1000);
+      setScreenState(screenStates.RESULT);
     }
   }
 
   return (
     <QuizBackground backgroundImage={bg}>
       <QuizContainer>
-        <QuizLogo />
         {screenState === screenStates.QUIZ && (
           <QuestionWidget
             question={question}
@@ -308,6 +216,7 @@ export default function QuizPage({ externalQuestions, externalBg }) {
         )}
 
         {screenState === screenStates.LOADING && <LoadingWidget />}
+
         {screenState === screenStates.RESULT && <ResultWidget results={results} />}
       </QuizContainer>
     </QuizBackground>

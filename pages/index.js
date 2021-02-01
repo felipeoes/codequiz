@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import db from '../db.json';
 import Widget from '../src/components/Widget';
+import QuizContainer from '../src/components/QuizContainer';
 import QuizBackground from '../src/components/QuizBackground';
 import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
@@ -38,18 +39,6 @@ const MainWidget = styled.div`
     font-size: 12px;
     font-weight: 400;
     line-height: 1.2;
-  }
-`;
-
-const QuizContainer = styled.div`
-  width: 100%;
-  max-width: 350px;
-  padding-top: 10px;
-  margin: auto 7%;
-  padding-bottom: 0;
-  @media screen and (max-width: 500px) {
-    margin: auto;
-    padding: 15px;
   }
 `;
 

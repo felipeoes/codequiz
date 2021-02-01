@@ -19,6 +19,7 @@
     "react-icons": "^4.1.0",
     "react-is": "^16.8.0",
     "react-nextjs-toast": "^1.2.5",
+    "react-overlays": "^4.1.1",
     "react-toastify": "^7.0.1",
     "styled-components": "^5.0.0"
   },

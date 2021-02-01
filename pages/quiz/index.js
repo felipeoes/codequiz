@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import QuizScreen from '../../src/screens/Quiz';
+import QuizScreen from '../../src/screens/Quiz/myindex';
 import db from '../../db.json';
 
 export default function QuizDaGaleraPage() {
