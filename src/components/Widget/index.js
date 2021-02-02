@@ -10,7 +10,6 @@ const Widget = styled.div`
   transition: .3s;
   &:hover,
   &:focus {
-    /* transform: scale(1.2); */
     box-shadow: 10px 8px 11px 2px rgba(20, 5, 21, 0.75);
     opacity: 0.9;
   }
@@ -61,13 +60,13 @@ Widget.Topic = styled.a`
   padding: 10px 15px;
   margin-bottom: 8px;
   font-size: 12px;
-  cursor: pointer;
+  /* cursor: pointer; */
   border-radius: ${({ theme }) => theme.borderRadius};
   transition: .3s;
   display: block;
-  
   &:hover,
   &:focus {
+    transform: scale(1.1);
     opacity: .5;
   }
 `;

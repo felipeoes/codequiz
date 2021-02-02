@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/react-in-jsx-scope */
@@ -5,9 +6,11 @@ import React from 'react';
 import styled from 'styled-components';
 import Modal from 'react-overlays/Modal';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import Button from '../Button';
 import Widget from '../Widget';
 import { getName } from '../../../pages/index';
+import { points } from '../../screens/Quiz/myindex';
 // import { ResultWidget } from '../../screens/Quiz/myindex';
 
 function ResultWidget({ handleOnClose }) {
@@ -19,7 +22,6 @@ function ResultWidget({ handleOnClose }) {
       <Widget.Header style={{ paddingTop: 5, paddingBottom: 0 }}>
         RANKING
         <Button
-          // style={{ marginLeft: '80%' }}
           onClick={handleOnClose}
         >
           <div style={{ marginLeft: '95%', marginRight: -250 }}>
@@ -63,7 +65,7 @@ function ResultWidget({ handleOnClose }) {
               <tr style={{ background: '#000', borderRadius: 5 }}>
                 <th>1</th>
                 <th>{getName}</th>
-                <th>10 pontos</th>
+                <th>{points}</th>
               </tr>
             </tbody>
           </table>
@@ -111,6 +113,9 @@ export default function ModalExample() {
   return (
     <div className="modal-example">
       <Button
+        as={motion.button}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
         style={{ marginTop: 10 }}
         onClick={() => setShow(true)}
       >

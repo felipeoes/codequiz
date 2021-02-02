@@ -1,3 +1,4 @@
+/* eslint-disable import/no-mutable-exports */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable react/prop-types */
@@ -24,6 +25,8 @@ import GitHubCorner from '../../components/GitHubCorner';
 import loadingAnimation from './animations/load.json';
 import success from './animations/success.json';
 import wrong from './animations/wrong.json';
+
+export let points = 0;
 
 export function ResultWidget({ results }) {
   const router = useRouter();
@@ -55,56 +58,72 @@ export function ResultWidget({ results }) {
         </p>
         Você acertou
         {' '}
-        {/* {results.reduce((somatoriaAtual, resultAtual) => {
-            const isAcerto = resultAtual === true;
-            if (isAcerto) {
-              return somatoriaAtual + 1;
-            }
-            return somatoriaAtual;
-          }, 0)} */}
         {results.filter((x) => x).length}
         {' '}
-        perguntas
+        perguntas e fez
+        {' '}
+        {results.reduce((somatoriaAtual, resultAtual) => {
+          const isAcerto = resultAtual === true;
+          if (isAcerto) {
+            points += 5;
+          }
+          return points;
+        }, 0)}
+        {' '}
+        pontos
         <p
           style={{ fontSize: 15 }}
         />
         <ul
-          style={{ justifyContent: 'center', alignItems: 'center', fontSize: 14 }}
+          style={{
+            marginBottom: -25, justifyContent: 'center', alignItems: 'center', fontSize: 14,
+          }}
         >
           {results.map((result, index) => (
             <li
-              // style={{ textAlign: 'center', justifyContent: 'center', alignItems: 'center' }}
+              style={{
+                display: 'flex', marginLeft: 80, fontSize: 14,
+              }}
               key={`result__${index}`}
             >
-              #
-              {index + 1}
-              {' '}
-              Pergunta:
+              <span style={{ marginTop: 15 }}>
+                #
+                {index + 1}
+                {/* Pergunta: */}
+              </span>
+
               {result === true
                 ? (
-                  <Lottie
-                    width="20%"
-                    height="20%"
-                    margin-left="0"
-                    padding-left="0"
-                    className="lottie-container basic"
-                    config={{ animationData: success, loop: true, autoplay: true }}
-                  />
+                  <div style={{ marginBottom: 0 }}>
+                    <Lottie
+                      width="50%"
+                      height="50%"
+                      margin-left="0"
+                      padding-left="0"
+                      className="lottie-container basic"
+                      config={{ animationData: success, loop: true, autoplay: true }}
+                    />
+                  </div>
                 )
                 : (
-                  <Lottie
-                    width="20%"
-                    height="20%"
-                    margin-left="0"
-                    padding-left="0"
-                    className="lottie-container basic"
-                    config={{ animationData: wrong, loop: true, autoplay: true }}
-                  />
+                  <div>
+                    <Lottie
+                      width="50%"
+                      height="50%"
+                      margin-left="0"
+                      padding-left="0"
+                      className="lottie-container basic"
+                      config={{ animationData: wrong, loop: true, autoplay: true }}
+                    />
+                  </div>
                 )}
             </li>
           ))}
         </ul>
         <Button
+          as={motion.button}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
           onClick={function (infosDoEvento) {
             infosDoEvento.preventDefault();
             router.push('/');
@@ -113,7 +132,12 @@ export function ResultWidget({ results }) {
           VOLTAR
         </Button>
         <Modal />
-        <h1 style={{ marginTop: 30, marginBottom: 10, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Compartilhe seu resultado</h1>
+        <h1 style={{
+          marginTop: 30, marginBottom: 15, display: 'flex', alignItems: 'center', justifyContent: 'center',
+        }}
+        >
+          Compartilhe seu resultado
+        </h1>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <FacebookShareButton
             url="https://strangerquiz.felipeoes.vercel.app"
