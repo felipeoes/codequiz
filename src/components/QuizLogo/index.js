@@ -15,8 +15,8 @@ export function Logo({ className }) {
     <svg
       className={className}
       xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="108"
+      width="170"
+      height="78"
       viewBox="0 0 728 400"
       onClick={function (infosDoEvento) {
         infosDoEvento.preventDefault();
@@ -63,6 +63,7 @@ const QuizLogo = styled(Logo)`
     cursor: pointer;
   }
   @media screen and (max-width: 500px) {
+    width: 30%;
     margin: 0;
   }
 `;
@@ -75,6 +76,7 @@ export const QuizLogoIndex = styled(Logo)`
     opacity: 0.7;
   }
   @media screen and (max-width: 500px) {
+    width: 30%;
     margin: 0;
   }
 `;

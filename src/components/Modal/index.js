@@ -11,7 +11,23 @@ import Button from '../Button';
 import Widget from '../Widget';
 import { getName } from '../../../pages/index';
 import { points } from '../../screens/Quiz/myindex';
-// import { ResultWidget } from '../../screens/Quiz/myindex';
+
+const ResponsiveWidgetContent = styled.div`
+padding: 24px 32px 24px 32px;
+& > *:first-child {
+  margin-top: 0;
+}
+& > *:last-child {
+  margin-bottom: 0;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+@media screen and (max-width: 500px) {
+    margin-left: -10%; 
+  }
+`;
 
 function ResultWidget({ handleOnClose }) {
   return (
@@ -24,7 +40,7 @@ function ResultWidget({ handleOnClose }) {
         <Button
           onClick={handleOnClose}
         >
-          <div style={{ marginLeft: '95%', marginRight: -250 }}>
+          <div style={{ marginLeft: '95%', marginRight: '-25%' }}>
             <Image
               src="/closeButton.png"
               alt="CloseButton"
@@ -35,7 +51,7 @@ function ResultWidget({ handleOnClose }) {
         </Button>
       </Widget.Header>
 
-      <Widget.Content>
+      <ResponsiveWidgetContent>
         <p style={{
           textAlign: 'center', alignItems: 'center', fontSize: 15,
         }}
@@ -64,13 +80,20 @@ function ResultWidget({ handleOnClose }) {
             <tbody>
               <tr style={{ background: '#000', borderRadius: 5 }}>
                 <th>1</th>
+                <th>&nbsp;Demogorgon&nbsp;</th>
+                <th>9999</th>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr style={{ background: '#000', borderRadius: 5 }}>
+                <th>2</th>
                 <th>{getName}</th>
                 <th>{points}</th>
               </tr>
             </tbody>
           </table>
         </section>
-      </Widget.Content>
+      </ResponsiveWidgetContent>
     </Widget>
   );
 }
@@ -86,20 +109,25 @@ const Backdrop = styled('div')`
   opacity: 0.5;
 `;
 
-// we use some pseudo random coords so nested modals
-// don't sit right on top of each other.
 const RandomlyPositionedModal = styled(Modal)`
   position: fixed;
-  width: 30%;
-  height: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35%;
+  height: 35%;
   z-index: 1040;
-  /* margin-left: 100; */
-  /* top: 150;
-  left: 150;  */
-  /* border: 5px solid '##dd3333'; */
-  /* background-color: white; */
-  /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); */
-  /* padding: 20px; */
+  outline: none;
+  margin-left: 35%; 
+  margin-top: 10%;
+  @media screen and (max-width: 500px) {
+    /* margin: auto; */
+    width: 100%;
+    height: 40%;
+    padding: 10px;
+    margin-left: 0.5%; 
+    margin-top: 45%;
+  }
 `;
 
 export default function ModalExample() {
@@ -123,7 +151,6 @@ export default function ModalExample() {
       </Button>
 
       <RandomlyPositionedModal
-        style={{ marginLeft: '35%', marginTop: '10%', outline: 'none' }}
         show={show}
         onHide={() => setShow(false)}
         renderBackdrop={renderBackdrop}

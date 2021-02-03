@@ -39,7 +39,7 @@ Widget.Header = styled.header`
 `;
 
 Widget.Content = styled.div`
-  padding: 24px 32px 24px 32px;
+  padding: 18px 32px 18px 32px;
   & > *:first-child {
     margin-top: 0;
   }

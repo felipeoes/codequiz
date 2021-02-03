@@ -20,6 +20,9 @@ const InputBase = styled.input`
     color: ${({ theme }) => theme.colors.contrastText}DD;
     opacity: 1; /* Firefox */
   }
+  @media screen and (max-width: 500px) {
+    margin-bottom: 0;
+  }
 `;
 
 export default function Input({ onChange, placeholder, ...props }) {

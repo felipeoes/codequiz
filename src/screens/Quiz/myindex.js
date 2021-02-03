@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable import/no-mutable-exports */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/jsx-no-bind */
@@ -40,7 +41,7 @@ export function ResultWidget({ results }) {
       }}
       initial="hidden"
       animate="show"
-      style={{ marginTop: 50 }}
+      style={{ marginTop: 40 }}
     >
       <Widget.Header>
         RESULTADO
@@ -126,6 +127,7 @@ export function ResultWidget({ results }) {
           whileTap={{ scale: 0.9 }}
           onClick={function (infosDoEvento) {
             infosDoEvento.preventDefault();
+            points = 0;
             router.push('/');
           }}
         >
@@ -211,8 +213,8 @@ function QuestionWidget({
       as={motion.footer}
       transition={{ delay: 0.5, duration: 0.7 }}
       variants={{
-        show: { opacity: 1, x: '0' },
-        hidden: { opacity: 0, x: '100%' },
+        show: { opacity: 1, y: '0%' },
+        hidden: { opacity: 0, y: '100%' },
       }}
       initial="hidden"
       animate="show"
