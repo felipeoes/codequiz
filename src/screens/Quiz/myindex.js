@@ -392,7 +392,7 @@ export default function QuizPage({ externalQuestions, externalBg }) {
         {screenState === screenStates.LOADING && <LoadingWidget />}
         {screenState === screenStates.RESULT && <ResultWidget results={results} />}
       </QuizContainer>
-      <GitHubCorner />
+      <GitHubCorner projectUrl="https://github.com/felipeoes" />
     </QuizBackground>
   );
 }
