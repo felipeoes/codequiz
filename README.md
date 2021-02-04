@@ -85,7 +85,7 @@ $ npm run dev
 # or
 $ yarn run dev
 
-# Application will be opened at port:3000, so just access http://localhost:5500
+# Application will be opened at port:3000, so just access http://localhost:3000 on your browser
 
 ```
 ---
