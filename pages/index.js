@@ -103,19 +103,20 @@ export default function Home() {
         {/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
         <script
           async
-          src="https://www.googletagmanager.com/gtag/js?id=G-1YEGYNJV92"
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
         />
-        <script>
-          dangerouslySetInnerHTML=
-          {{
+        <script
+          dangerouslySetInnerHTML={{
             __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-1YEGYNJV92', { page_path: window.location.pathname });
-            `,
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
+              page_path: window.location.pathname,
+            });
+          `,
           }}
-        </script>
+        />
       </Head>
       <QuizContainer>
         <QuizLogoIndex />
